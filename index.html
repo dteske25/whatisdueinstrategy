@@ -38,9 +38,7 @@
         $('#start').click(function () {
           $('#start').hide();
           $('#loading').show();
-          randomProgress();
-          randomProgress();
-          randomProgress();
+          randomTimeout(randomProgress());
         });
       });  
       
