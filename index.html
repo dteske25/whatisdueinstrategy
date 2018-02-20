@@ -10,8 +10,8 @@
         <p class="lead">Wouldn't it be great to have a website that keeps track of what's actually due for Strategy?</p>
         <hr class="my-4">
         <p class="lead">
-          <div class="progress" style="width:100%">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" id="loading" role="progressbar" style="display:none" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" id="loading" role="progressbar" style="width:100%" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
           <button class="btn btn-primary btn-lg" id="start">Learn more</button>
         </p>
@@ -33,10 +33,12 @@
         randomTimeout(this);
       }
       $(document).ready(function (){
-          $('#start').click(function () {
-            $('#loading').show();
-            randomProgress();
-          });
+        $('#loading').hide();
+        $('#start').click(function () {
+          $('#start').hide();
+          $('#loading').show();
+          randomProgress();
+        });
       });  
       
       
