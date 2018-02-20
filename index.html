@@ -31,14 +31,13 @@
       function randomProgress(){
         var prev = +$('#loading').attr('aria-valuenow');
         $('#loading').attr('aria-valuenow', prev+1).css('width',(prev+1)+'%');
-        
       }
       $(document).ready(function (){
         $('#loading').hide();
         $('#start').click(function () {
           $('#start').hide();
           $('#loading').show();
-          randomTimeout(randomProgress());
+          randomTimeout(randomProgress);
         });
       });  
       
