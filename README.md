@@ -1,2 +1,1 @@
-# What Is Due In Strategy
-Hell if I know.
+How the hell should I know?
