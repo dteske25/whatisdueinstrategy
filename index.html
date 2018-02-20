@@ -10,8 +10,8 @@
         <p class="lead">Wouldn't it be great to have a website that keeps track of what's actually due for Strategy?</p>
         <hr class="my-4">
         <p class="lead">
-          <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" id="loading" role="progressbar" style="display:none" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress" style="width:100%">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" id="loading" role="progressbar" style="display:none" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
           <button class="btn btn-primary btn-lg" id="start">Learn more</button>
         </p>
@@ -22,13 +22,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script>
+      function randomTimeout(method){
+        var time = Math.random() * 1000;
+        setTimeout(method, time);
+      }
+      
+      function randomProgress(){
+        var prev = +$('#loading').attr('aria-valuenow');
+        $('#loading').attr('aria-valuenow', prev+1).css('width',(prev+1)+'%');
+        randomTimeout(this);
+      }
       $(document).ready(function (){
-          $('#loading').hide();
           $('#start').click(function () {
             $('#loading').show();
-            //.attr('aria-valuenow', newprogress).css('width',newprogress);
+            randomProgress();
           });
       });  
+      
+      
     </script>
   
   </body>
