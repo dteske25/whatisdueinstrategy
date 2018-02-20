@@ -14,6 +14,9 @@
             <div class="progress-bar progress-bar-striped progress-bar-animated" id="loading" role="progressbar" style="width:100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
           <button class="btn btn-primary btn-lg" id="start">Learn more</button>
+          <div class="alert alert-danger" id="loadFailure" role="alert">
+            Unable to load. Redirecting in 10 second(s).
+          </div>
         </p>
       </div>
       
@@ -25,15 +28,30 @@
       function randomTimeout(method){
         var time = Math.round(Math.random() * 1000);
         setTimeout(function () {
-          method();
-          randomTimeout(method);
+          var result = method();
+          if (result) {
+            randomTimeout(method);
+          } else {
+           displayError(); 
+          }
         }, time);
       }
       
       function randomProgress(){
-        console.log('executing');
         var prev = +$('#loading').attr('aria-valuenow');
+        if (prev >= 95){
+          return false;
+        }
         $('#loading').attr('aria-valuenow', prev+1).css('width',(prev+1)+'%');
+        return true;
+      }
+      
+      function displayError() {
+        $('#loading').hide();
+        $('#loadFailure').show();
+        setTimeout(function () {
+          location.href = 'https://canvas.unl.edu/courses/33976';
+        }, 10000);
       }
       $(document).ready(function (){
         $('#loading').hide();
@@ -43,9 +61,6 @@
           randomTimeout(randomProgress);
         });
       });  
-      
-      
     </script>
-  
   </body>
 </html>
