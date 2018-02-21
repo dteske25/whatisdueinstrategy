@@ -15,7 +15,7 @@
           </div>
           <button class="btn btn-primary btn-lg" id="start">Get Started</button>
           <div class="alert alert-danger" id="loadFailure" role="alert">
-            Unable to load. Retrying in 10 second(s).
+            Unable to load. No one knows what's happening.
           </div>
         </p>
       </div>
@@ -52,7 +52,7 @@
         $('#loadFailure').show();
         setTimeout(function () {
           location.href = 'https://canvas.unl.edu/courses/33976';
-        }, 10000);
+        }, 5000);
       }
       
       function changeProgressClass() {
