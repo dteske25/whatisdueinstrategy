@@ -33,7 +33,7 @@
             randomTimeout(method);
           } else {
             changeProgressClass();
-            setTimeout(displayError, 3000);
+            setTimeout(displayError, 5000);
           }
         }, time);
       }
@@ -56,7 +56,9 @@
       }
       
       function changeProgressClass() {
-        $('#loading').addClass('bg-danger'); 
+        setTimeout(function() {
+          $('#loading').addClass('bg-danger'); 
+        }, 2000); 
       }
       $(document).ready(function (){
         $('#loading').hide();
